@@ -32,3 +32,12 @@ function dirOpposite(dir1, dir2) {
 
   return false;
 }
+
+dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
+//   ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"],
+//   ["WEST"]
+
+dirReduc(["NORTH", "WEST", "SOUTH", "EAST"]);
+//   ["NORTH", "WEST", "SOUTH", "EAST"]
+
+["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"], [];
