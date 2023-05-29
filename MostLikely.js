@@ -25,4 +25,4 @@ function mostLikely(prob1, prob2) {
   return actualProbability1 > actualProbability2;
 }
 
-console.log(mostLikely("1:1", "1:2")); // false
+console.log(mostLikely("1:3", "1:2")); // false
