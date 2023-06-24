@@ -63,6 +63,7 @@
  * @returns
  */
 
+/*
 function countPalindromes(a, b) {
   const A050250 = {
     1: 9,
@@ -116,6 +117,38 @@ function isPalindrome(num) {
   }
 
   return true;
+}
+*/
+
+function countPalindromes(a, b) {
+  if (!Number.isInteger(a)) {
+    a = Math.ceil(a);
+  }
+  if (!Number.isInteger(b)) {
+    b = Math.floor(b);
+  }
+
+  let count = 0;
+
+  for (let num = Math.max(a, 0); num <= b; num++) {
+    if (isPalindrome(num)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+function isPalindrome(num) {
+  let reversed = 0;
+  let original = num;
+
+  while (num > 0) {
+    const digit = num % 10;
+    reversed = reversed * 10 + digit;
+    num = Math.floor(num / 10);
+  }
+
+  return original === reversed;
 }
 
 console.log(countPalindromes(0, 99));
