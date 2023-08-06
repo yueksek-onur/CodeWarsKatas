@@ -45,61 +45,85 @@
  *
  * @param {*} array
  * @returns
- */
+//  */
+// function canJump(array) {
+//   let pivot = array[0];
+//   let currentPointer = 0;
+//   let road = array.length + 1;
+//   let sum = 0;
+//   let iteration = 0;
+
+//   //edge cases
+//   if (array.length === 1) {
+//     return false;
+//   }
+//   if (array.length === 2 && array[0] === 1) {
+//     return false;
+//   }
+//   if (pivot >= road) {
+//     return true;
+//   }
+//   if (pivot === array.length - 1) {
+//     pivot--;
+//   }
+
+//   while (true) {
+//     if (road - sum <= 0) {
+//       return true;
+//     }
+//     if (currentPointer + pivot > array.length - 1) {
+//       if (currentPointer !== array.length - 1) {
+//         return true;
+//       }
+//     }
+
+//     if (
+//       array[currentPointer + pivot] !== 0 &&
+//       currentPointer + pivot < array.length
+//     ) {
+//       currentPointer += pivot;
+//       sum += pivot;
+//       pivot = array[currentPointer];
+//     } else {
+//       if (pivot > 0) {
+//         sum -= pivot;
+//         pivot--;
+//       }
+//     }
+
+//     if (sum >= road) {
+//       return true;
+//     }
+
+//     if (iteration === array.length) {
+//       return array[currentPointer] + pivot >= road ? true : false;
+//     }
+//     iteration++;
+//   }
+// }
+
 function canJump(array) {
-  let pivot = array[0];
-  let currentPointer = 0;
-  let road = array.length + 1;
-  let sum = 0;
-  let iteration = 0;
+  let index = array[0];
+  let pos = 0;
+  let result = false;
 
-  //edge cases
-  if (array.length === 1) {
-    return false;
-  }
-  if (array.length === 2 && array[0] === 1) {
-    return false;
-  }
-  if (pivot >= road) {
-    return true;
-  }
-  if (pivot === array.length - 1) {
-    pivot--;
-  }
-
-  while (true) {
-    if (road - sum <= 0) {
-      return true;
-    }
-    if (currentPointer + pivot > array.length - 1) {
-      if (currentPointer !== array.length - 1) {
-        return true;
-      }
+  searchRoute();
+  function searchRoute() {
+    if (array.length === 1 || array.length === 0 || index === 0) {
+      result = false;
+      result;
     }
 
-    if (
-      array[currentPointer + pivot] !== 0 &&
-      currentPointer + pivot < array.length
-    ) {
-      currentPointer += pivot;
-      sum += pivot;
-      pivot = array[currentPointer];
+    if (array[pos] + array[index] > array.length) {
+      result = true;
+      result;
     } else {
-      if (pivot > 0) {
-        sum -= pivot;
-        pivot--;
-      }
+      index--;
+      pos = index;
     }
-
-    if (sum >= road) {
-      return true;
-    }
-
-    if (iteration === array.length) {
-      return array[currentPointer] + pivot >= road ? true : false;
-    }
-    iteration++;
   }
+
+  return result;
 }
 
 console.log(canJump([4, 1, 2, 0, 1])); // false
